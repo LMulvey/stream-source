@@ -2460,11 +2460,11 @@
       if (true) {
         (function() {
           "use strict";
-          var React4 = require_react();
+          var React5 = require_react();
           var _assign = require_object_assign();
           var Scheduler = require_scheduler();
           var tracing = require_tracing();
-          var ReactSharedInternals = React4.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React5.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function warn(format) {
             {
               for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -2496,7 +2496,7 @@
               Function.prototype.apply.call(console[level], console, argsWithFormat);
             }
           }
-          if (!React4) {
+          if (!React5) {
             {
               throw Error("ReactDOM was loaded before React. Make sure you load the React package before loading ReactDOM.");
             }
@@ -3712,7 +3712,7 @@
           var didWarnInvalidChild = false;
           function flattenChildren(children) {
             var content = "";
-            React4.Children.forEach(children, function(child) {
+            React5.Children.forEach(children, function(child) {
               if (child == null) {
                 return;
               }
@@ -3723,7 +3723,7 @@
           function validateProps(element, props) {
             {
               if (typeof props.children === "object" && props.children !== null) {
-                React4.Children.forEach(props.children, function(child) {
+                React5.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -10916,7 +10916,7 @@
           }
           var fakeInternalInstance = {};
           var isArray = Array.isArray;
-          var emptyRefsObject = new React4.Component().refs;
+          var emptyRefsObject = new React5.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -20935,11 +20935,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
 
   // src/index.tsx
-  var import_react4 = __toModule(require_react());
+  var import_react5 = __toModule(require_react());
   var import_react_dom = __toModule(require_react_dom());
 
   // src/components/App.tsx
-  var import_react3 = __toModule(require_react());
+  var import_react4 = __toModule(require_react());
 
   // node_modules/styled-components/dist/styled-components.browser.esm.js
   var import_react_is = __toModule(require_react_is());
@@ -22159,9 +22159,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, e2;
   }();
   typeof navigator != "undefined" && navigator.product === "ReactNative" && console.warn("It looks like you've imported 'styled-components' on React Native.\nPerhaps you're looking to import 'styled-components/native'?\nRead more about this at https://www.styled-components.com/docs/basics#react-native"), typeof window != "undefined" && (window["__styled-components-init__"] = window["__styled-components-init__"] || 0, window["__styled-components-init__"] === 1 && console.warn("It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.\n\nSee https://s-c.sh/2BAXzed for more info."), window["__styled-components-init__"] += 1);
+  var styled_components_browser_esm_default = He;
 
   // src/components/Donations.tsx
-  var import_react2 = __toModule(require_react());
+  var import_react3 = __toModule(require_react());
 
   // node_modules/extra-life/dist/module.js
   var a2 = (a3) => fetch(a3).then((a4) => a4.json().then((t3) => ({ headers: a4.headers, status: a4.status, json: t3 }))).then(({ headers: a4, status: t3, json: s3 }) => {
@@ -22180,20 +22181,33 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   // src/utils/constants.ts
   var PARTICIPANT_ID = 465108;
 
+  // src/components/Card.tsx
+  var import_react2 = __toModule(require_react());
+  var CardContainer = styled_components_browser_esm_default.div`
+  background: #e08f0c;
+  color: white;
+`;
+  var Card = ({ title, value }) => {
+    return /* @__PURE__ */ import_react2.default.createElement(CardContainer, null, /* @__PURE__ */ import_react2.default.createElement("h4", null, title), value);
+  };
+
   // src/components/Donations.tsx
   var getDonations = () => {
     return r2(PARTICIPANT_ID);
   };
   var Donations = () => {
-    const [donations, setDonations] = (0, import_react2.useState)(null);
-    (0, import_react2.useEffect)(() => {
+    const [donations, setDonations] = (0, import_react3.useState)(null);
+    (0, import_react3.useEffect)(() => {
       (() => __async(void 0, null, function* () {
         const response = yield getDonations();
         setDonations(response);
       }))();
     }, []);
     console.log({ donations });
-    return /* @__PURE__ */ import_react2.default.createElement("h2", null, "donation");
+    return /* @__PURE__ */ import_react3.default.createElement(Card, {
+      title: "Most recent donation",
+      value: "$25"
+    });
   };
 
   // src/components/App.tsx
@@ -22208,11 +22222,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   }
 `;
   var App = () => {
-    return /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement(Donations, null));
+    return /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement(Donations, null));
   };
 
   // src/index.tsx
-  import_react_dom.default.render(/* @__PURE__ */ import_react4.default.createElement(App, null), document.getElementById("root"));
+  import_react_dom.default.render(/* @__PURE__ */ import_react5.default.createElement(App, null), document.getElementById("root"));
 })();
 /*
 object-assign

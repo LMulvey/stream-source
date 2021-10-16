@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getParticipantDonations } from 'extra-life';
 import { PARTICIPANT_ID } from '../utils/constants';
+import { Card } from './Card';
 
 const getDonations = () => {
   return getParticipantDonations(PARTICIPANT_ID);
@@ -17,5 +18,5 @@ export const Donations = () => {
 
   console.log({ donations });
 
-  return <h2>donation</h2>;
+  return <Card title="Most recent donation" value="$25" />;
 };
