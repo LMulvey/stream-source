@@ -14,7 +14,7 @@ const liveServer = require('live-server');
     entryPoints: ['src/index.tsx'],
     incremental: true,
     minify: process.env.NODE_ENV === 'production',
-    outfile: 'public/bundle.js',
+    outfile: 'docs/bundle.js',
   });
   chokidar
     .watch('src/**/*.{ts,tsx}', {
@@ -26,6 +26,6 @@ const liveServer = require('live-server');
   liveServer.start({
     open: true,
     port: +process.env.PORT || 8080,
-    root: 'public',
+    root: 'docs',
   });
 })();
