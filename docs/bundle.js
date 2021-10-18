@@ -67,18 +67,21 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
     height: 100%;
     padding: 0 16px;
   `}
-`,Zd=e=>fo(void 0,null,function*(){let t=yield(0,Kd.getUserInfo)(Gi);console.log("Fetching UserInfo"),e(t)}),qd=()=>{var i;let[e,t]=(0,Ki.useState)(null);(0,Ki.useEffect)(()=>{e===null&&Zd(t);let l=setInterval(()=>{Zd(t)},3e4);return()=>clearInterval(l)},[]);let n=(i=e==null?void 0:e.fundraisingGoal)!=null?i:1e3,r=500,o=`${r/n*100}%`;return un.default.createElement(Xi,{title:"Extra-Life Donation Goal!"},un.default.createElement(C0,null,un.default.createElement(_0,{width:o}),un.default.createElement(x0,null,un.default.createElement("span",null,"$",r.toLocaleString()),un.default.createElement("span",null,"$",n.toLocaleString()))))};var Wn=Ie(st()),Jd=Ie(Fs());var bd=e=>fo(void 0,null,function*(){let n=(yield(0,Jd.getUserDonations)(Gi)).donations,r=n.length?n[0]:null;console.log("Fetching most recent donation"),e(r)}),ep=()=>{var r;let[e,t]=(0,Wn.useState)(null);(0,Wn.useEffect)(()=>{e===null&&bd(t);let o=setInterval(()=>{bd(t)},3e4);return()=>clearInterval(o)},[]);let n=e?`$${e.amount} from ${(r=e.displayName)!=null?r:"Anonymous"}`:"N/A";return Wn.default.createElement(Xi,{title:"Most recent donation",value:n})};var P0=Wd`
+`,Zd=e=>fo(void 0,null,function*(){let t=yield(0,Kd.getUserInfo)(Gi);console.log("Fetching UserInfo"),e(t)}),qd=()=>{var i,l;let[e,t]=(0,Ki.useState)(null);(0,Ki.useEffect)(()=>{e===null&&Zd(t);let u=setInterval(()=>{Zd(t)},3e4);return()=>clearInterval(u)},[]);let n=(i=e==null?void 0:e.fundraisingGoal)!=null?i:1e3,r=(l=e==null?void 0:e.sumDonations)!=null?l:0,o=`${r/n*100}%`;return un.default.createElement(Xi,{title:"Extra-Life Donation Goal!"},un.default.createElement(C0,null,un.default.createElement(_0,{width:o}),un.default.createElement(x0,null,un.default.createElement("span",null,"$",r.toLocaleString()),un.default.createElement("span",null,"$",n.toLocaleString()))))};var Wn=Ie(st()),Jd=Ie(Fs());var bd=e=>fo(void 0,null,function*(){let n=(yield(0,Jd.getUserDonations)(Gi)).donations,r=n.length?n[0]:null;console.log("Fetching most recent donation"),e(r)}),ep=()=>{var r;let[e,t]=(0,Wn.useState)(null);(0,Wn.useEffect)(()=>{e===null&&bd(t);let o=setInterval(()=>{bd(t)},3e4);return()=>clearInterval(o)},[]);let n=e?`$${e.amount} from ${(r=e.displayName)!=null?r:"Anonymous"}`:"N/A";return Wn.default.createElement(Xi,{title:"Most recent donation",value:n})};var P0=Wd`
   html {
     box-sizing: border-box;
     font-family: 'Fredoka One', cursive;
     font-size: 24px;
+    height: 100%;
+    max-height: 100vh;
+    overflow: hidden;
   }
   *, *:before, *:after {
     box-sizing: inherit;
   }
 `,N0=lt.div`
   width: 444px;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-flow: column;
   justify-content: flex-end;

@@ -9,6 +9,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Fredoka One', cursive;
     font-size: 24px;
+    height: 100%;
+    max-height: 100vh;
+    overflow: hidden;
   }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -17,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
 
 const ScreenContainer = styled.div`
   width: 444px;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-flow: column;
   justify-content: flex-end;

@@ -61,7 +61,7 @@ export const DonationGoal = () => {
   }, []);
 
   const donationGoal = userInfo?.fundraisingGoal ?? 1000;
-  const currentDonations = 500;
+  const currentDonations = userInfo?.sumDonations ?? 0;
   const percentageComplete = `${(currentDonations / donationGoal) * 100}%`;
 
   return (
