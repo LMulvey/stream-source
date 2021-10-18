@@ -1,7 +1,7 @@
 import React from 'react';
 import { getUserInfo, IExtraLifeUser } from 'extra-life-api';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { PARTICIPANT_ID } from '../utils/constants';
+import { API_POLLING_MS, PARTICIPANT_ID } from '../utils/constants';
 import styled, { css } from 'styled-components';
 import { Card } from './Card';
 
@@ -55,7 +55,7 @@ export const DonationGoal = () => {
 
     const interval = setInterval(() => {
       void getAndSetUserInfo(setUserInfo);
-    }, 30_000);
+    }, API_POLLING_MS);
 
     return () => clearInterval(interval);
   }, []);

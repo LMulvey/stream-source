@@ -2460,11 +2460,11 @@
       if (true) {
         (function() {
           "use strict";
-          var React6 = require_react();
+          var React7 = require_react();
           var _assign = require_object_assign();
           var Scheduler = require_scheduler();
           var tracing = require_tracing();
-          var ReactSharedInternals = React6.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React7.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function warn(format) {
             {
               for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -2496,7 +2496,7 @@
               Function.prototype.apply.call(console[level], console, argsWithFormat);
             }
           }
-          if (!React6) {
+          if (!React7) {
             {
               throw Error("ReactDOM was loaded before React. Make sure you load the React package before loading ReactDOM.");
             }
@@ -3712,7 +3712,7 @@
           var didWarnInvalidChild = false;
           function flattenChildren(children) {
             var content = "";
-            React6.Children.forEach(children, function(child) {
+            React7.Children.forEach(children, function(child) {
               if (child == null) {
                 return;
               }
@@ -3723,7 +3723,7 @@
           function validateProps(element, props) {
             {
               if (typeof props.children === "object" && props.children !== null) {
-                React6.Children.forEach(props.children, function(child) {
+                React7.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -10916,7 +10916,7 @@
           }
           var fakeInternalInstance = {};
           var isArray = Array.isArray;
-          var emptyRefsObject = new React6.Component().refs;
+          var emptyRefsObject = new React7.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -21162,11 +21162,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
 
   // src/index.tsx
-  var import_react7 = __toModule(require_react());
+  var import_react8 = __toModule(require_react());
   var import_react_dom = __toModule(require_react_dom());
 
   // src/components/App.tsx
-  var import_react6 = __toModule(require_react());
+  var import_react7 = __toModule(require_react());
 
   // node_modules/styled-components/dist/styled-components.browser.esm.js
   var import_react_is = __toModule(require_react_is());
@@ -22388,44 +22388,48 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   typeof navigator != "undefined" && navigator.product === "ReactNative" && console.warn("It looks like you've imported 'styled-components' on React Native.\nPerhaps you're looking to import 'styled-components/native'?\nRead more about this at https://www.styled-components.com/docs/basics#react-native"), typeof window != "undefined" && (window["__styled-components-init__"] = window["__styled-components-init__"] || 0, window["__styled-components-init__"] === 1 && console.warn("It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.\n\nSee https://s-c.sh/2BAXzed for more info."), window["__styled-components-init__"] += 1);
   var styled_components_browser_esm_default = He;
 
-  // src/components/DonationGoal.tsx
+  // src/components/DonateCTA.tsx
   var import_react3 = __toModule(require_react());
-  var import_extra_life_api = __toModule(require_dist());
-  var import_react4 = __toModule(require_react());
-
-  // src/utils/constants.ts
-  var PARTICIPANT_ID = 465108;
 
   // src/components/Card.tsx
   var import_react2 = __toModule(require_react());
+  var getGradient = (variant) => {
+    switch (variant) {
+      case "green":
+        return `linear-gradient(to right, #0083B0, #00B4DB);`;
+      case "orange":
+      default:
+        return `linear-gradient(
+        144deg,
+        rgba(239, 159, 57, 1) 40%,
+        rgba(247, 210, 105, 1) 100%
+        )`;
+    }
+  };
   var CardContainer = styled_components_browser_esm_default.div`
-  background: rgb(239, 159, 57);
-  background: linear-gradient(
-    144deg,
-    rgba(239, 159, 57, 1) 40%,
-    rgba(247, 210, 105, 1) 100%
-  );
-  color: white;
-  padding: 16px 32px 16px 16px;
-  transform: skew(-4deg, 0deg);
-  font-size: 20px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  border-radius: 8px 8px 0px 8px;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
-  border-right: 16px solid rgb(211, 142, 52);
+  ${({ variant = "orange" }) => Ce`
+    background: rgb(239, 159, 57);
+    background: ${getGradient(variant)};
+    color: white;
+    padding: 16px 32px 16px 16px;
+    transform: skew(-4deg, 0deg);
+    font-size: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    border-radius: 8px 8px 0px 8px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-right: 16px solid rgba(0, 0, 0, 0.05);
+  `}
 `;
   var Title = styled_components_browser_esm_default.div`
-  margin: 0;
-  font-size: 1.225em;
-  background: linear-gradient(
-    144deg,
-    rgba(239, 159, 57, 1) 40%,
-    rgba(247, 210, 105, 1) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  ${({ variant = "orange" }) => Ce`
+    margin: 0;
+    font-size: 1.225em;
+    background: ${getGradient(variant)};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  `}
 `;
   var TitleContainer = styled_components_browser_esm_default.div`
   padding: 8px 44px 8px 24px;
@@ -22434,9 +22438,35 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   background: rgba(0, 0, 0, 0.85);
   margin-bottom: 8px;
 `;
-  var Card = ({ children, title, value }) => {
-    return /* @__PURE__ */ import_react2.default.createElement(CardContainer, null, /* @__PURE__ */ import_react2.default.createElement(TitleContainer, null, /* @__PURE__ */ import_react2.default.createElement(Title, null, title)), children != null ? children : value);
+  var Card = ({
+    children,
+    title,
+    value,
+    variant = "orange"
+  }) => {
+    return /* @__PURE__ */ import_react2.default.createElement(CardContainer, {
+      variant
+    }, /* @__PURE__ */ import_react2.default.createElement(TitleContainer, null, /* @__PURE__ */ import_react2.default.createElement(Title, {
+      variant
+    }, title)), children != null ? children : value);
   };
+
+  // src/components/DonateCTA.tsx
+  var DonateCTA = () => {
+    return /* @__PURE__ */ import_react3.default.createElement(Card, {
+      variant: "green",
+      title: "Donate to the cause"
+    }, "https://jjjangus.com/ - go here to see our Extra Life page");
+  };
+
+  // src/components/DonationGoal.tsx
+  var import_react4 = __toModule(require_react());
+  var import_extra_life_api = __toModule(require_dist());
+  var import_react5 = __toModule(require_react());
+
+  // src/utils/constants.ts
+  var PARTICIPANT_ID = 465108;
+  var API_POLLING_MS = 15e3;
 
   // src/components/DonationGoal.tsx
   var GoalContainer = styled_components_browser_esm_default.div`
@@ -22474,28 +22504,28 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
   var DonationGoal = () => {
     var _a, _b;
-    const [userInfo, setUserInfo] = (0, import_react4.useState)(null);
-    (0, import_react4.useEffect)(() => {
+    const [userInfo, setUserInfo] = (0, import_react5.useState)(null);
+    (0, import_react5.useEffect)(() => {
       if (userInfo === null) {
         void getAndSetUserInfo(setUserInfo);
       }
       const interval = setInterval(() => {
         void getAndSetUserInfo(setUserInfo);
-      }, 3e4);
+      }, API_POLLING_MS);
       return () => clearInterval(interval);
     }, []);
     const donationGoal = (_a = userInfo == null ? void 0 : userInfo.fundraisingGoal) != null ? _a : 1e3;
     const currentDonations = (_b = userInfo == null ? void 0 : userInfo.sumDonations) != null ? _b : 0;
     const percentageComplete = `${currentDonations / donationGoal * 100}%`;
-    return /* @__PURE__ */ import_react3.default.createElement(Card, {
+    return /* @__PURE__ */ import_react4.default.createElement(Card, {
       title: "Extra-Life Donation Goal!"
-    }, /* @__PURE__ */ import_react3.default.createElement(GoalContainer, null, /* @__PURE__ */ import_react3.default.createElement(Meter, {
+    }, /* @__PURE__ */ import_react4.default.createElement(GoalContainer, null, /* @__PURE__ */ import_react4.default.createElement(Meter, {
       width: percentageComplete
-    }), /* @__PURE__ */ import_react3.default.createElement(Amounts, null, /* @__PURE__ */ import_react3.default.createElement("span", null, "$", currentDonations.toLocaleString()), /* @__PURE__ */ import_react3.default.createElement("span", null, "$", donationGoal.toLocaleString()))));
+    }), /* @__PURE__ */ import_react4.default.createElement(Amounts, null, /* @__PURE__ */ import_react4.default.createElement("span", null, "$", currentDonations.toLocaleString()), /* @__PURE__ */ import_react4.default.createElement("span", null, "$", donationGoal.toLocaleString()))));
   };
 
   // src/components/MostRecentDonation.tsx
-  var import_react5 = __toModule(require_react());
+  var import_react6 = __toModule(require_react());
   var import_extra_life_api2 = __toModule(require_dist());
   var getDonations = (setMostRecentDonation) => __async(void 0, null, function* () {
     const response = yield (0, import_extra_life_api2.getUserDonations)(PARTICIPANT_ID);
@@ -22506,18 +22536,18 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   });
   var MostRecentDonation = () => {
     var _a;
-    const [mostRecentDonation, setMostRecentDonation] = (0, import_react5.useState)(null);
-    (0, import_react5.useEffect)(() => {
+    const [mostRecentDonation, setMostRecentDonation] = (0, import_react6.useState)(null);
+    (0, import_react6.useEffect)(() => {
       if (mostRecentDonation === null) {
         void getDonations(setMostRecentDonation);
       }
       const interval = setInterval(() => {
         void getDonations(setMostRecentDonation);
-      }, 3e4);
+      }, API_POLLING_MS);
       return () => clearInterval(interval);
     }, []);
     const value = mostRecentDonation ? `$${mostRecentDonation.amount} from ${(_a = mostRecentDonation.displayName) != null ? _a : "Anonymous"}` : "N/A";
-    return /* @__PURE__ */ import_react5.default.createElement(Card, {
+    return /* @__PURE__ */ import_react6.default.createElement(Card, {
       title: "Most recent donation",
       value
     });
@@ -22549,11 +22579,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   }
 `;
   var App = () => {
-    return /* @__PURE__ */ import_react6.default.createElement(ScreenContainer, null, /* @__PURE__ */ import_react6.default.createElement(GlobalStyle, null), /* @__PURE__ */ import_react6.default.createElement(DonationGoal, null), /* @__PURE__ */ import_react6.default.createElement(MostRecentDonation, null));
+    return /* @__PURE__ */ import_react7.default.createElement(ScreenContainer, null, /* @__PURE__ */ import_react7.default.createElement(GlobalStyle, null), /* @__PURE__ */ import_react7.default.createElement(DonationGoal, null), /* @__PURE__ */ import_react7.default.createElement(MostRecentDonation, null), /* @__PURE__ */ import_react7.default.createElement(DonateCTA, null));
   };
 
   // src/index.tsx
-  import_react_dom.default.render(/* @__PURE__ */ import_react7.default.createElement(App, null), document.getElementById("root"));
+  import_react_dom.default.render(/* @__PURE__ */ import_react8.default.createElement(App, null), document.getElementById("root"));
 })();
 /*
 object-assign

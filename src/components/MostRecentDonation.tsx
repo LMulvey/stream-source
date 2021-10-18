@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { getUserDonations } from 'extra-life-api';
-import { PARTICIPANT_ID } from '../utils/constants';
+import { API_POLLING_MS, PARTICIPANT_ID } from '../utils/constants';
 import { Card } from './Card';
 import type { IExtraLifeDonation } from 'extra-life-api/dist/helpers/interfaces';
 
@@ -26,7 +26,7 @@ export const MostRecentDonation = () => {
 
     const interval = setInterval(() => {
       void getDonations(setMostRecentDonation);
-    }, 30_000);
+    }, API_POLLING_MS);
 
     return () => clearInterval(interval);
   }, []);

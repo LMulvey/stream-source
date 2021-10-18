@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Card } from './Card';
+import { DonateCTA } from './DonateCTA';
 import { DonationGoal } from './DonationGoal';
 import { MostRecentDonation } from './MostRecentDonation';
 
@@ -36,6 +37,7 @@ export const App = () => {
       <GlobalStyle />
       <DonationGoal />
       <MostRecentDonation />
+      <DonateCTA />
     </ScreenContainer>
   );
 };
