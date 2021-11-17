@@ -17,7 +17,6 @@ async function clearJSFolder() {
 async function grabBundleName() {
   const files = await fs.readdir(directory);
   const bundleFile = files.find((file) => file.startsWith('bundle-'));
-  console.log({ bundleFile, files });
   return bundleFile;
 }
 
@@ -27,7 +26,6 @@ async function buildHTML() {
     if (err) {
       return console.log(err);
     }
-    console.log({ bundleName });
     const result = data.replace(/\[BUNDLE-NAME\]/g, bundleName);
     fs.writeFile(`docs/index.html`, result, 'utf8', function (err) {
       if (err) return console.log(err);

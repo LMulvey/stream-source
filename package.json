@@ -1,7 +1,7 @@
 {
   "name": "stream-source",
   "version": "1.0.0",
-  "description": "",
+  "description": "Stream overlay",
   "main": "index.js",
   "scripts": {
     "build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=docs/bundle.js",
@@ -13,13 +13,17 @@
     "url": "git+https://github.com/LMulvey/stream-source.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "@lmulvey",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LMulvey/stream-source/issues"
   },
   "homepage": "https://github.com/LMulvey/stream-source#readme",
   "devDependencies": {
+    "@types/dayjs-precise-range": "^1.0.1",
+    "@types/node": "^16.11.7",
+    "@types/react": "17.0.30",
+    "@types/react-dom": "17.0.9",
     "@types/styled-components": "^5.1.15",
     "chokidar": "^3.5.2",
     "esbuild": "^0.13.7",
@@ -28,15 +32,16 @@
     "eslint-config-prettier": "^8.3.0",
     "fs-extra": "^10.0.0",
     "live-server": "^1.2.1",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "typescript": "4.4.4"
   },
   "dependencies": {
-    "@types/react": "17.0.30",
-    "@types/react-dom": "17.0.9",
+    "@supabase/supabase-js": "1.28.0",
+    "dayjs": "1.10.7",
+    "dayjs-precise-range": "1.0.1",
     "extra-life-api": "6.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "styled-components": "5.3.1",
-    "typescript": "4.4.4"
+    "styled-components": "5.3.1"
   }
 }

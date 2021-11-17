@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { getUserDonations } from 'extra-life-api';
-import { API_POLLING_MS, PARTICIPANT_ID } from '../utils/constants';
-import { Card } from './Card';
+import { EL_API_POLLING_MS, PARTICIPANT_ID } from '../../utils/constants';
+import { Card } from '../Card';
 import type { IExtraLifeDonation } from 'extra-life-api/dist/helpers/interfaces';
 
 const getDonations = async (
@@ -26,7 +26,7 @@ export const MostRecentDonation = () => {
 
     const interval = setInterval(() => {
       void getDonations(setMostRecentDonation);
-    }, API_POLLING_MS);
+    }, EL_API_POLLING_MS);
 
     return () => clearInterval(interval);
   }, []);
@@ -37,5 +37,5 @@ export const MostRecentDonation = () => {
       }`
     : 'N/A';
 
-  return <Card title="Most recent donation" value={value} />;
+  return <Card variant="purple" title="Most Recent Donation" value={value} />;
 };

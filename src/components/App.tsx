@@ -1,9 +1,13 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Card } from './Card';
-import { DonateCTA } from './DonateCTA';
-import { DonationGoal } from './DonationGoal';
-import { MostRecentDonation } from './MostRecentDonation';
+import {
+  DonateCTA,
+  DonationGoal,
+  MostRecentDonation,
+  TopDonation,
+} from './ExtraLife';
+import { Stats } from './SOT';
+import { Timer } from './Timer';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -13,15 +17,21 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     max-height: 100vh;
     overflow: hidden;
+    padding: 0 24px;
   }
   *, *:before, *:after {
     box-sizing: inherit;
   }
 `;
 
-const ScreenContainer = styled.div`
-  width: 444px;
+const Grid = styled.div`
   height: 100%;
+  display: grid;
+  grid-template-columns: 444px auto 444px;
+  column-gap: 44px;
+`;
+
+const ScreenContainer = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: flex-end;
@@ -33,11 +43,19 @@ const ScreenContainer = styled.div`
 
 export const App = () => {
   return (
-    <ScreenContainer>
+    <Grid>
       <GlobalStyle />
-      <DonationGoal />
-      <MostRecentDonation />
-      <DonateCTA />
-    </ScreenContainer>
+      <ScreenContainer>
+        <DonateCTA />
+        <DonationGoal />
+        <TopDonation />
+        <MostRecentDonation />
+      </ScreenContainer>
+      <ScreenContainer />
+      <ScreenContainer>
+        <Stats />
+        <Timer />
+      </ScreenContainer>
+    </Grid>
   );
 };

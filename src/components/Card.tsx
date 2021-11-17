@@ -1,18 +1,23 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 import styled, { css } from 'styled-components';
 
-type CardVariant = 'green' | 'orange';
+type CardVariant = 'blue' | 'green' | 'orange' | 'purple';
 
 type CardProps = ComponentPropsWithoutRef<'div'> & {
   title: string;
   value?: string | null;
   variant?: CardVariant;
+  hideSkew?: boolean;
 };
 
 const getGradient = (variant: CardVariant) => {
   switch (variant) {
-    case 'green':
+    case 'blue':
       return `linear-gradient(to right, #0083B0, #00B4DB);`;
+    case 'green':
+      return `linear-gradient(to right, #00b05e, #00db66);`;
+    case 'purple':
+      return `linear-gradient(to right, #cf04be, #ee05b4);`;
     case 'orange':
     default:
       return `linear-gradient(
@@ -23,20 +28,24 @@ const getGradient = (variant: CardVariant) => {
   }
 };
 
-const CardContainer = styled.div<{ variant: CardVariant }>`
-  ${({ variant = 'orange' }) => css`
+const CardContainer = styled.div<{ variant: CardVariant; hideSkew?: boolean }>`
+  ${({ variant = 'orange', hideSkew = false }) => css`
     background: rgb(239, 159, 57);
     background: ${getGradient(variant)};
     color: white;
     padding: 16px 32px 16px 16px;
-    transform: skew(-4deg, 0deg);
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     border-radius: 8px 8px 0px 8px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
     border-right: 16px solid rgba(0, 0, 0, 0.05);
+
+    ${!hideSkew &&
+    css`
+      transform: skew(-2deg, 0deg);
+    `}
   `}
 `;
 
@@ -63,9 +72,10 @@ export const Card = ({
   title,
   value,
   variant = 'orange',
+  hideSkew = false,
 }: CardProps) => {
   return (
-    <CardContainer variant={variant}>
+    <CardContainer variant={variant} hideSkew={hideSkew}>
       <TitleContainer>
         <Title variant={variant}>{title}</Title>
       </TitleContainer>

@@ -1,9 +1,10 @@
 import React from 'react';
 import { getUserInfo, IExtraLifeUser } from 'extra-life-api';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { API_POLLING_MS, PARTICIPANT_ID } from '../utils/constants';
+import { API_POLLING_MS, PARTICIPANT_ID } from '../../utils/constants';
 import styled, { css } from 'styled-components';
-import { Card } from './Card';
+import { Card } from '../Card';
+import { formatCurrency } from '../../utils/money';
 
 const GoalContainer = styled.div`
   border: 6px solid #000000;
@@ -69,8 +70,8 @@ export const DonationGoal = () => {
       <GoalContainer>
         <Meter width={percentageComplete} />
         <Amounts>
-          <span>${currentDonations.toLocaleString()}</span>
-          <span>${donationGoal.toLocaleString()}</span>
+          <span>{formatCurrency(currentDonations)}</span>
+          <span>{formatCurrency(donationGoal)}</span>
         </Amounts>
       </GoalContainer>
     </Card>
