@@ -26778,11 +26778,22 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       }
     });
   }
+  function getReapersSunk(setStats) {
+    return __async(this, null, function* () {
+      const { data, error } = yield supabase.from("ships_sunk").select("*").eq("enemy_emissary", 1);
+      if (!error) {
+        const filteredData = data ? data.filter((item) => dayjs_default(item.created_at).isBetween(START_TIME, END_TIME)) : [];
+        const results = filteredData.length;
+        setStats((c2) => __spreadProps(__spreadValues({}, c2), { reapersSunk: results }));
+      }
+    });
+  }
   function getStats(setStats) {
     return __async(this, null, function* () {
       yield Promise.all([
         getGoldProfit(setStats),
         getShipsSunk(setStats),
+        getReapersSunk(setStats),
         getTimesSunk(setStats),
         getFortsCompleted(setStats),
         getPlayersBanned(setStats)
@@ -26807,6 +26818,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 `;
   var defaultStats = {
     shipsSunk: 0,
+    reapersSunk: 0,
     timesSunk: 0,
     goldAccumulated: 0,
     fortsCompleted: 0,
@@ -26827,7 +26839,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       variant: "blue",
       title: "Stream Stats",
       hideSkew: true
-    }, /* @__PURE__ */ import_react8.default.createElement(List, null, /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F3F4}\u200D\u2620\uFE0F ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Ships Sunk:"), " ", stats.shipsSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u2620\uFE0F ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Times We Sunk:"), " ", stats.timesSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F911} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Gold Profit:"), " ", stats.goldAccumulated.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F3F0} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Forts Completed:"), " ", stats.fortsCompleted.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F4A5} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Toxic Players Banned:"), " ", stats.toxicPlayersBanned.toLocaleString())));
+    }, /* @__PURE__ */ import_react8.default.createElement(List, null, /* @__PURE__ */ import_react8.default.createElement("li", null, "\u26F4 ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Ships Sunk:"), " ", stats.shipsSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F479} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Reapers Sunk:"), " ", stats.reapersSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u2620\uFE0F ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Times We Sunk:"), " ", stats.timesSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F911} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Gold Profit:"), " ", stats.goldAccumulated.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F3F0} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Forts Completed:"), " ", stats.fortsCompleted.toLocaleString())));
   };
 
   // src/components/Timer.tsx

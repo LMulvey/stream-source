@@ -95,10 +95,30 @@ export async function getPlayersBanned(setStats: SetStatsType) {
   }
 }
 
+export async function getReapersSunk(setStats: SetStatsType) {
+  const { data, error } = await supabase
+    .from('ships_sunk')
+    .select('*')
+    .eq('enemy_emissary', 1);
+
+  if (!error) {
+    const filteredData = data
+      ? data.filter((item) =>
+          dayjs(item.created_at).isBetween(START_TIME, END_TIME)
+        )
+      : [];
+
+    const results = filteredData.length;
+
+    setStats((c) => ({ ...c, reapersSunk: results }));
+  }
+}
+
 export async function getStats(setStats: SetStatsType) {
   await Promise.all([
     getGoldProfit(setStats),
     getShipsSunk(setStats),
+    getReapersSunk(setStats),
     getTimesSunk(setStats),
     getFortsCompleted(setStats),
     getPlayersBanned(setStats),

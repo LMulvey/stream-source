@@ -22,6 +22,7 @@ const List = styled.ul`
 
 export type Stats = {
   shipsSunk: number;
+  reapersSunk: number;
   timesSunk: number;
   goldAccumulated: number;
   fortsCompleted: number;
@@ -31,6 +32,7 @@ export type Stats = {
 
 const defaultStats = {
   shipsSunk: 0,
+  reapersSunk: 0,
   timesSunk: 0,
   goldAccumulated: 0,
   fortsCompleted: 0,
@@ -57,7 +59,10 @@ export const Stats = () => {
     <Card variant="blue" title="Stream Stats" hideSkew>
       <List>
         <li>
-          🏴‍☠️ <strong>Ships Sunk:</strong> {stats.shipsSunk.toLocaleString()}
+          ⛴ <strong>Ships Sunk:</strong> {stats.shipsSunk.toLocaleString()}
+        </li>
+        <li>
+          👹 <strong>Reapers Sunk:</strong> {stats.reapersSunk.toLocaleString()}
         </li>
         <li>
           ☠️ <strong>Times We Sunk:</strong> {stats.timesSunk.toLocaleString()}
@@ -70,10 +75,10 @@ export const Stats = () => {
           🏰 <strong>Forts Completed:</strong>{' '}
           {stats.fortsCompleted.toLocaleString()}
         </li>
-        <li>
+        {/* <li>
           💥 <strong>Toxic Players Banned:</strong>{' '}
           {stats.toxicPlayersBanned.toLocaleString()}
-        </li>
+        </li> */}
       </List>
     </Card>
   );
