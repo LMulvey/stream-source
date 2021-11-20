@@ -137,5 +137,6 @@ export async function getStats(setStats: SetStatsType) {
     getTimesSunk(setStats),
     getFortsCompleted(setStats),
     getPlayersBanned(setStats),
+    getFlagsSold(setStats),
   ]);
 }
