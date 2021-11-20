@@ -23703,8 +23703,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // src/utils/constants.ts
   var PARTICIPANT_ID = 465108;
-  var API_POLLING_MS = 6e4;
-  var EL_API_POLLING_MS = 3e5;
+  var API_POLLING_MS = 3e4;
+  var EL_API_POLLING_MS = 2e5;
   var START_TIME = dayjs_default("2021-11-19 21:00:00");
   var END_TIME = START_TIME.add(dayjs_default.duration({ hours: 24 }));
   var INITIAL_TIME_REMAINING = dayjs_default.preciseDiff(START_TIME, END_TIME, true);
@@ -26788,6 +26788,16 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       }
     });
   }
+  function getFlagsSold(setStats) {
+    return __async(this, null, function* () {
+      const { data, error } = yield supabase.from("flags_sold").select("*");
+      if (!error) {
+        const filteredData = data ? data.filter((item) => dayjs_default(item.created_at).isBetween(START_TIME, END_TIME)) : [];
+        const results = filteredData.length;
+        setStats((c2) => __spreadProps(__spreadValues({}, c2), { flagsSold: results }));
+      }
+    });
+  }
   function getStats(setStats) {
     return __async(this, null, function* () {
       yield Promise.all([
@@ -26796,7 +26806,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         getReapersSunk(setStats),
         getTimesSunk(setStats),
         getFortsCompleted(setStats),
-        getPlayersBanned(setStats)
+        getPlayersBanned(setStats),
+        getFlagsSold(setStats)
       ]);
     });
   }
