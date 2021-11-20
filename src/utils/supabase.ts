@@ -114,6 +114,21 @@ export async function getReapersSunk(setStats: SetStatsType) {
   }
 }
 
+export async function getFlagsSold(setStats: SetStatsType) {
+  const { data, error } = await supabase.from('flags_sold').select('*');
+
+  if (!error) {
+    const filteredData = data
+      ? data.filter((item) =>
+          dayjs(item.created_at).isBetween(START_TIME, END_TIME)
+        )
+      : [];
+
+    const results = filteredData.length;
+    setStats((c) => ({ ...c, flagsSold: results }));
+  }
+}
+
 export async function getStats(setStats: SetStatsType) {
   await Promise.all([
     getGoldProfit(setStats),

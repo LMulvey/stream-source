@@ -28,6 +28,7 @@ export type Stats = {
   fortsCompleted: number;
   toxicPlayersReported: number;
   toxicPlayersBanned: number;
+  flagsSold: number;
 };
 
 const defaultStats = {
@@ -38,6 +39,7 @@ const defaultStats = {
   fortsCompleted: 0,
   toxicPlayersReported: 0,
   toxicPlayersBanned: 0,
+  flagsSold: 0,
 };
 
 export const Stats = () => {
@@ -58,6 +60,9 @@ export const Stats = () => {
   return (
     <Card variant="blue" title="Stream Stats" hideSkew>
       <List>
+        <li>
+          🏁 <strong>Flags Sold:</strong> {stats.flagsSold.toLocaleString()}
+        </li>
         <li>
           ⛴ <strong>Ships Sunk:</strong> {stats.shipsSunk.toLocaleString()}
         </li>
