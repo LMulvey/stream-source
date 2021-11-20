@@ -61,21 +61,23 @@ export async function getTimesSunk(setStats: SetStatsType) {
   }
 }
 
-export async function getFortsCompleted(setStats: SetStatsType) {
+export async function getEventsCompleted(setStats: SetStatsType) {
   const { data, error } = await supabase.from('events_completed').select('*');
 
   if (!error) {
     const filteredData = data
-      ? data.filter(
-          (item) =>
-            dayjs(item.created_at).isBetween(START_TIME, END_TIME) &&
-            [1, 3, 5].includes(item.event_type)
+      ? data.filter((item) =>
+          dayjs(item.created_at).isBetween(START_TIME, END_TIME)
         )
       : [];
+    const forts = filteredData.filter((item) =>
+      [1, 3, 5].includes(item.event_type)
+    );
 
-    const results = filteredData.length;
+    const eventsCompleted = filteredData.length;
+    const fortsCompleted = forts.length;
 
-    setStats((c) => ({ ...c, fortsCompleted: results }));
+    setStats((c) => ({ ...c, fortsCompleted, eventsCompleted }));
   }
 }
 
@@ -135,7 +137,7 @@ export async function getStats(setStats: SetStatsType) {
     getShipsSunk(setStats),
     getReapersSunk(setStats),
     getTimesSunk(setStats),
-    getFortsCompleted(setStats),
+    getEventsCompleted(setStats),
     getPlayersBanned(setStats),
     getFlagsSold(setStats),
   ]);

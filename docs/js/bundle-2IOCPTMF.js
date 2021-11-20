@@ -26758,13 +26758,15 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       }
     });
   }
-  function getFortsCompleted(setStats) {
+  function getEventsCompleted(setStats) {
     return __async(this, null, function* () {
       const { data, error } = yield supabase.from("events_completed").select("*");
       if (!error) {
-        const filteredData = data ? data.filter((item) => dayjs_default(item.created_at).isBetween(START_TIME, END_TIME) && [1, 3, 5].includes(item.event_type)) : [];
-        const results = filteredData.length;
-        setStats((c2) => __spreadProps(__spreadValues({}, c2), { fortsCompleted: results }));
+        const filteredData = data ? data.filter((item) => dayjs_default(item.created_at).isBetween(START_TIME, END_TIME)) : [];
+        const forts = filteredData.filter((item) => [1, 3, 5].includes(item.event_type));
+        const eventsCompleted = filteredData.length;
+        const fortsCompleted = forts.length;
+        setStats((c2) => __spreadProps(__spreadValues({}, c2), { fortsCompleted, eventsCompleted }));
       }
     });
   }
@@ -26805,7 +26807,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         getShipsSunk(setStats),
         getReapersSunk(setStats),
         getTimesSunk(setStats),
-        getFortsCompleted(setStats),
+        getEventsCompleted(setStats),
         getPlayersBanned(setStats),
         getFlagsSold(setStats)
       ]);
@@ -26833,6 +26835,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     timesSunk: 0,
     goldAccumulated: 0,
     fortsCompleted: 0,
+    eventsCompleted: 0,
     toxicPlayersReported: 0,
     toxicPlayersBanned: 0,
     flagsSold: 0
@@ -26851,7 +26854,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       variant: "blue",
       title: "Stream Stats",
       hideSkew: true
-    }, /* @__PURE__ */ import_react8.default.createElement(List, null, /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F3C1} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Flags Sold:"), " ", stats.flagsSold.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u26F4 ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Ships Sunk:"), " ", stats.shipsSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F479} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Reapers Sunk:"), " ", stats.reapersSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u2620\uFE0F ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Times We Sunk:"), " ", stats.timesSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F911} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Gold Profit:"), " ", stats.goldAccumulated.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F3F0} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Forts Completed:"), " ", stats.fortsCompleted.toLocaleString())));
+    }, /* @__PURE__ */ import_react8.default.createElement(List, null, /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F3C1} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Flags Sold:"), " ", stats.flagsSold.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u26F4 ", /* @__PURE__ */ import_react8.default.createElement("strong", null, " Ships Sunk:"), " ", stats.shipsSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F479} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Reapers Sunk:"), " ", stats.reapersSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u2620\uFE0F ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Times We Sunk:"), " ", stats.timesSunk.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F911} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Gold Profit:"), " ", stats.goldAccumulated.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F3AD} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Events Completed:"), " ", stats.eventsCompleted.toLocaleString()), /* @__PURE__ */ import_react8.default.createElement("li", null, "\u{1F3F0} ", /* @__PURE__ */ import_react8.default.createElement("strong", null, "Forts Completed:"), " ", stats.fortsCompleted.toLocaleString())));
   };
 
   // src/components/Timer.tsx

@@ -26,6 +26,7 @@ export type Stats = {
   timesSunk: number;
   goldAccumulated: number;
   fortsCompleted: number;
+  eventsCompleted: number;
   toxicPlayersReported: number;
   toxicPlayersBanned: number;
   flagsSold: number;
@@ -37,6 +38,7 @@ const defaultStats = {
   timesSunk: 0,
   goldAccumulated: 0,
   fortsCompleted: 0,
+  eventsCompleted: 0,
   toxicPlayersReported: 0,
   toxicPlayersBanned: 0,
   flagsSold: 0,
@@ -64,7 +66,7 @@ export const Stats = () => {
           🏁 <strong>Flags Sold:</strong> {stats.flagsSold.toLocaleString()}
         </li>
         <li>
-          ⛴ <strong>Ships Sunk:</strong> {stats.shipsSunk.toLocaleString()}
+          ⛴ <strong> Ships Sunk:</strong> {stats.shipsSunk.toLocaleString()}
         </li>
         <li>
           👹 <strong>Reapers Sunk:</strong> {stats.reapersSunk.toLocaleString()}
@@ -75,6 +77,10 @@ export const Stats = () => {
         <li>
           🤑 <strong>Gold Profit:</strong>{' '}
           {stats.goldAccumulated.toLocaleString()}
+        </li>
+        <li>
+          🎭 <strong>Events Completed:</strong>{' '}
+          {stats.eventsCompleted.toLocaleString()}
         </li>
         <li>
           🏰 <strong>Forts Completed:</strong>{' '}
